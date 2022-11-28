@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+{% block content %}
+<form>
+    <div class="alert alert-danger hidden"></div>
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control rounded" id="username" name="username" value="">
+    </div>
+    <div class="form-group mt-3">
+        <label for="password">Password</label>
+        <input type="password" class="form-control rounded" id="password" name="password">
+    </div>
+    <button type="submit" class="btn btn-primary mt-3 rounded" id="login">Login</button>
+</form>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/login.js') }}"></script>
+{% endblock %}

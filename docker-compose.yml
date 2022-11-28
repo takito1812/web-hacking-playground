@@ -1,0 +1,12 @@
+version: "3.3"
+
+services:
+  socially:
+    container_name: whp-socially
+    image: whp-socially
+    build: ./socially
+
+  exploitserver:
+    container_name: whp-exploitserver
+    image: whp-exploitserver
+    build: ./exploitserver

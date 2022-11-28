@@ -1,0 +1,5 @@
+Flask==2.2.2
+Flask_Bcrypt==1.0.1
+Flask_SQLAlchemy==2.5.1
+PyJWT==2.6.0
+Werkzeug==2.2.2

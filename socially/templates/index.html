@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<div class="alert alert-danger hidden"></div>
+{% if session %}
+<form action="/post" method="POST">
+  <div class="input-group mb-3">
+    <input type="text" class="form-control rounded" id="post" name="post" placeholder="What's on your mind?">
+    <div class="input-group-append">
+      <button type="submit" class="btn btn-primary rounded">Post</button>
+    </div>
+  </div>
+</form>
+{% endif %}
+{% for post in posts %}
+<div class="card rounded mt-3">
+  <div class="card-body">
+    <h5 class="card-title">{{ post.user.username }} - <small
+        class="text-muted ">{{ post.date.strftime("%b %d") }}</small></h5>
+    <p class="card-text">{{ post.post | safe }}</p>
+  </div>
+</div>
+{% endfor %}
+{% endblock %}
+{% block scripts %}
+{% if session %}
+<script src="{{ url_for('static', filename='js/post.js') }}"></script>
+{% endif %}
+{% endblock %}

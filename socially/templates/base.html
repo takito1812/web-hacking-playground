@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %} | Socially</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='img/logo.svg') }}" type="image/svg+xml">
+</head>
+
+<body>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-2">
+                <nav class="nav flex-column">
+                    <a class="nav-link" href=""><img src="{{ url_for('static', filename='img/logo.svg') }}" alt="logo" class="mb-3" width="40" height="40"></a>
+                    <a class="nav-link" href="{{ url_for('index') }}">Home</a>
+                    {% if not session %}
+                    <a class="nav-link" href="{{ url_for('login') }}">Login</a>
+                    {% endif %}
+                    {% if session['admin'] == True %}
+                    <a class="nav-link" href="{{ url_for('admin') }}">Admin</a>
+                    {% endif %}
+                    {% if session %}
+                    <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+                    {% endif %}
+                </nav>
+                {% if session %}
+                <div class="mt-4">
+                    <p>Logged in as {{ session['username'] }}</p>
+                </div>
+                {% endif %}
+            </div>
+            <div class="col-9">
+                <h1>{{ self.title() }}</h1>
+                <hr>
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    {% block scripts %}{% endblock %}
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Verify OTP</title>
+</head>
+
+<body>
+    <form style="display: none;">
+        <p>An OTP has been sent to your email address. Please enter it below.</p>
+        <input type="text" name="otp" id="otp">
+        <input type="submit" value="Verify">
+    </form>
+</body>
+<script>
+    fetch('/generateotp', {
+            method: 'GET',
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('token')
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            document.querySelector('form').style.display = 'block';
+        })
+
+    const form = document.querySelector('form');
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const otp = document.querySelector('#otp').value;
+        fetch('/verifyotp', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
+                },
+                body: JSON.stringify({
+                    otp
+                })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    document.querySelector('body').innerHTML =
+                        '<h1>OTP verified</h1><p>You can now close this window.</p>';
+                } else {
+                    document.querySelector('body').innerHTML =
+                        '<h1>OTP entered is incorrect</h1><p>Please try again.</p>';
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 3000);
+                }
+            })
+    })
+</script>
+
+</html>
