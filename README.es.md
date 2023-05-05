@@ -23,16 +23,12 @@ Para instalar Docker en Kali Linux, ejecutar los siguientes comandos:
     sudo apt update -y
     sudo apt install -y docker.io
     sudo systemctl enable docker --now
-    sudo usermod -aG docker $USER
 
 Para instalar Docker en otras distribuciones basadas en Debian, ejecutar los siguientes comandos:
 
     curl -fsSL https://get.docker.com -o get-docker.sh
     sudo sh get-docker.sh
     sudo systemctl enable docker --now
-    sudo usermod -aG docker $USER
-
-Se recomienda cerrar la sesión y volver a iniciarla para que se reconozca que el usuario pertenece al grupo docker.
 
 Para instalar Docker Compose, ejecutar el siguiente comando:
 
