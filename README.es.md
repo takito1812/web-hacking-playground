@@ -68,8 +68,8 @@ Esto creará dos contenedores de aplicaciones desarrolladas en Flask en el puert
 Es necesario añadir la IP de los contenedores al fichero /etc/hosts, para que se puedan acceder a ellos por su nombre y que el servidor de explotación pueda comunicarse con la aplicación web vulnerable. Para ello, ejecutar los siguientes comandos:
 
     sudo sed -i '/whp-/d' /etc/hosts
-    echo "$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' whp-socially) whp-socially" | sudo tee -a /etc/hosts
-    echo "$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' whp-exploitserver) whp-exploitserver" | sudo tee -a /etc/hosts
+    echo "$(sudo docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' whp-socially) whp-socially" | sudo tee -a /etc/hosts
+    echo "$(sudo docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' whp-exploitserver) whp-exploitserver" | sudo tee -a /etc/hosts
 
 Una vez hecho esto, ya se puede acceder a la aplicación vulnerable desde http://whp-socially y al servidor de explotación desde http://whp-exploitserver.
 
