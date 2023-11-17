@@ -58,7 +58,7 @@ Once everything you need is installed, you can deploy the environment with the f
 
     git clone https://github.com/takito1812/web-hacking-playground.git
     cd web-hacking-playground
-    docker-compose up -d
+    sudo docker-compose up -d
 
 This will create two containers of applications developed in Flask on port 80:
 
