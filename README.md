@@ -70,8 +70,8 @@ This will create two containers of applications developed in Flask on port 80:
 It is necessary to add the IP of the containers to the /etc/hosts file, so that they can be accessed by name and that the exploit server can communicate with the vulnerable web application. To do this, run the following commands:
 
     sudo sed -i '/whp-/d' /etc/hosts
-    echo "$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' whp-socially) whp-socially" | sudo tee -a /etc/hosts
-    echo "$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' whp-exploitserver) whp-exploitserver" | sudo tee -a /etc/hosts
+    echo "$(sudo docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' whp-socially) whp-socially" | sudo tee -a /etc/hosts
+    echo "$(sudo docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' whp-exploitserver) whp-exploitserver" | sudo tee -a /etc/hosts
 
 Once this is done, the vulnerable application can be accessed from http://whp-socially and the exploit server from http://whp-exploitserver.
 
