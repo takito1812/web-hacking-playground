@@ -56,7 +56,7 @@ Crearemos un nuevo perfil en Foxy Proxy para usar Burp Suite como proxy. Para el
 
 Una vez instalado todo lo necesario, se puede desplegar el entorno con el siguiente comando:
 
-    docker-compose up -d
+    sudo docker-compose up -d
 
 Esto creará dos contenedores de aplicaciones desarrolladas en Flask en el puerto 80:
 
