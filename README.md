@@ -42,7 +42,7 @@ The next step is to clone the repository and build the Docker images:
 
     git clone https://github.com/takito1812/web-hacking-playground.git
     cd web-hacking-playground
-    docker-compose build
+    sudo docker-compose build
 
 Also, it is recommended to install the [Foxy Proxy](https://addons.mozilla.org/en-US/firefox/addon/foxyproxy-standard/) browser extension, which allows you to easily change proxy settings, and [Burp Suite](https://portswigger.net/burp/communitydownload), which we will use to intercept HTTP requests.
 
